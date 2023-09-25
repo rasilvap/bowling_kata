@@ -17,7 +17,7 @@ public class StrikeFrameInterpreterTest {
 
     @Before
     public void setUp() {
-        initializeStrikeFrameParser();
+        initializeStrikeFrameInterpreter();
     }
 
     @Test
@@ -34,7 +34,7 @@ public class StrikeFrameInterpreterTest {
         assertNull(result);
     }
 
-    private void initializeStrikeFrameParser() {
+    private void initializeStrikeFrameInterpreter() {
         strikeFrameInterpreter = new StrikeFrameInterpreter();
     }
 

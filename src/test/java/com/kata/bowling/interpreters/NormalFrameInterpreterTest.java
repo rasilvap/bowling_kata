@@ -17,7 +17,7 @@ public class NormalFrameInterpreterTest {
 
     @Before
     public void setUp() {
-        initializeStrikeFrameParser();
+        initializeStrikeFrameInterpreter();
     }
 
     @Test
@@ -27,7 +27,7 @@ public class NormalFrameInterpreterTest {
         assertTrue(result instanceof NormalFrame);
     }
 
-    private void initializeStrikeFrameParser() {
+    private void initializeStrikeFrameInterpreter() {
         normalFrameInterpreter = new NormalFrameInterpreter();
     }
 

@@ -12,11 +12,11 @@ import java.util.List;
 
 public class BowlingScoreCalculator {
 
-    private LineInterpreter lineParser;
+    private LineInterpreter lineInterpreter;
 
 
     public BowlingScoreCalculator() {
-        initializeLineParser();
+        initializeLineInterpreter();
     }
 
 
@@ -27,17 +27,17 @@ public class BowlingScoreCalculator {
      * @return calculated score.
      */
     public int getScore(String rolls) {
-        List<Frame> frames = lineParser.parse(rolls);
+        List<Frame> frames = lineInterpreter.parse(rolls);
         return getScore(frames);
     }
 
-    private void initializeLineParser() {
-        Collection<FrameInterpreter> parsers = new LinkedList<FrameInterpreter>();
-        parsers.add(new StrikeFrameInterpreter());
-        parsers.add(new SpareFrameInterpreter());
-        parsers.add(new NormalFrameInterpreter());
-        parsers.add(new ZeroFrameInterpreter());
-        lineParser = new LineInterpreter(parsers);
+    private void initializeLineInterpreter() {
+        Collection<FrameInterpreter> interpreters = new LinkedList<FrameInterpreter>();
+        interpreters.add(new StrikeFrameInterpreter());
+        interpreters.add(new SpareFrameInterpreter());
+        interpreters.add(new NormalFrameInterpreter());
+        interpreters.add(new ZeroFrameInterpreter());
+        lineInterpreter = new LineInterpreter(interpreters);
     }
 
     private int getScore(final List<Frame> frames) {

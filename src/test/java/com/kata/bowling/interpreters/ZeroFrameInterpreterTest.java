@@ -17,7 +17,7 @@ public class ZeroFrameInterpreterTest {
 
     @Before
     public void setUp() {
-        initializeStrikeFrameParser();
+        initializeStrikeFrameInterpreter();
     }
 
     @Test
@@ -34,7 +34,7 @@ public class ZeroFrameInterpreterTest {
         assertNull(result);
     }
 
-    private void initializeStrikeFrameParser() {
+    private void initializeStrikeFrameInterpreter() {
         zeroFrameInterpreter = new ZeroFrameInterpreter();
     }
 
