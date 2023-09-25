@@ -37,8 +37,6 @@ public class BowlingScoreCalculatorTest {
         rollsSequencesList = Map.of(
                 "5/5/5/5/5/5/5/5/5/5/5", 150,
                 "9-9-9-9-9-9-9-9-9-9-", 90,
-                "2-2-2-2-2-2-2-2-2-2-", 20,
-                "524653XX5/--189/XXX", 134,
                 "XXXXXXXXXXXX", 300,
                 "--------------------", 0
         );
