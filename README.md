@@ -1,1 +1,3 @@
-# bowling_kata
+Initial readme
+=======
+
