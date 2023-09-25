@@ -8,4 +8,6 @@ public interface Frame {
 
     int getDuplicationDuration();
 
+    int getNextFrameScore();
+
 }

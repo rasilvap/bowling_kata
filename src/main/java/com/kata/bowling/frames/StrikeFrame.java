@@ -20,4 +20,9 @@ public class StrikeFrame implements Frame {
     public int getDuplicationDuration() {
         return DUPLICATION_DURATION;
     }
+
+    @Override
+    public int getNextFrameScore() {
+        return 10;
+    }
 }

@@ -27,13 +27,6 @@ public class NormalFrameInterpreterTest {
         assertTrue(result instanceof NormalFrame);
     }
 
-    @Test
-    public void shouldReturnNullFrame() {
-        Frame result = normalFrameInterpreter.createFrameFromInput(INVALID_FRAME);
-
-        assertNull(result);
-    }
-
     private void initializeStrikeFrameParser() {
         normalFrameInterpreter = new NormalFrameInterpreter();
     }

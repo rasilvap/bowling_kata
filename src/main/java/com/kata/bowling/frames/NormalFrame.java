@@ -25,4 +25,9 @@ public class NormalFrame implements Frame {
     public int getDuplicationDuration() {
         return 0;
     }
+
+    @Override
+    public int getNextFrameScore() {
+        return 0;
+    }
 }

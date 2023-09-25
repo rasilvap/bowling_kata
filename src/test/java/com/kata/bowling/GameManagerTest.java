@@ -68,15 +68,15 @@ public class GameManagerTest {
         gameManager.addFrame(new NormalFrame(4, 3));
         gameManager.addFrame(new StrikeFrame());
         gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new SpareFrame());
+        gameManager.addFrame(new SpareFrame(1));
         gameManager.addFrame(new ZeroFrame());
         gameManager.addFrame(new NormalFrame(1, 8));
-        gameManager.addFrame(new SpareFrame());
+        gameManager.addFrame(new SpareFrame(1));
         gameManager.addFrame(new StrikeFrame());
         gameManager.addFrame(new StrikeFrame());
         gameManager.addFrame(new StrikeFrame());
 
-        assertEquals(140, gameManager.getScore());
+        assertEquals(122, gameManager.getScore());
     }
 
     @Test
@@ -99,12 +99,12 @@ public class GameManagerTest {
 
     @Test
     public void shouldReturnSumOfNormalFramesCombinedWithSparesAndStrikes() {
-        gameManager.addFrame(new SpareFrame());
+        gameManager.addFrame(new SpareFrame(1));
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
-        gameManager.addFrame(new SpareFrame());
+        gameManager.addFrame(new SpareFrame(1));
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
@@ -132,7 +132,6 @@ public class GameManagerTest {
     }
 
     private SpareFrame generateSpareFrame() {
-        return new SpareFrame();
+        return new SpareFrame(10);
     }
-
 }

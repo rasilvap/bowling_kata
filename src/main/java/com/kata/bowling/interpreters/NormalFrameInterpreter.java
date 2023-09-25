@@ -13,14 +13,14 @@ public class NormalFrameInterpreter implements FrameInterpreter {
         Frame result = null;
         if (isNormalFrame(frame)) {
             int firstRoll = getScore(frame.charAt(0) + EMPTY_STRING);
-            int secondRoll = getScore(frame.charAt(1) + EMPTY_STRING);
+            int secondRoll = (frame.length() == 2) ? getScore(frame.charAt(1) + EMPTY_STRING) : 0;
             result = getFrame(firstRoll, secondRoll);
         }
         return result;
     }
 
     private boolean isNormalFrame(String frame) {
-        return frame.length() == 2;
+        return frame.length() == 1 || frame.length() == 2;
     }
 
     private Frame getFrame(int firstThrow, int secondThrow) {

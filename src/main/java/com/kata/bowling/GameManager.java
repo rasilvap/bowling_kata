@@ -1,6 +1,7 @@
 package com.kata.bowling;
 
 import com.kata.bowling.frames.Frame;
+import com.kata.bowling.frames.NormalFrame;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +33,13 @@ class GameManager {
         return score + frame.getScore();
     }
 
+    private int incrementScoreForDuplicates(int score, Frame frame) {
+        if(frame instanceof NormalFrame){
+            return score + frame.getScore();
+        }
+        return score + frame.getNextFrameScore();
+    }
+
     private boolean shouldDuplicateNextScores(Frame frame) {
         return frame.hasToDuplicateNextFrame() && frame.getDuplicationDuration() > 0;
     }
@@ -40,7 +48,7 @@ class GameManager {
         final int topNextFrame = currentFrame + 1;
         int nextFrame = topNextFrame;
         while (nextFrame < (topNextFrame + frame.getDuplicationDuration())) {
-            score = incrementScore(score, frames.get(nextFrame));
+            score = incrementScoreForDuplicates(score, frames.get(nextFrame));
             if (frames.get(nextFrame).getDuplicationDuration() == 1 && frame.getDuplicationDuration() != 1) {
                 nextFrame++;
             }

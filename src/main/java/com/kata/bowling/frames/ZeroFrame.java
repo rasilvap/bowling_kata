@@ -1,6 +1,5 @@
 package com.kata.bowling.frames;
 
-
 public class ZeroFrame implements Frame {
 
     private static final int SCORE = 0;
@@ -17,6 +16,11 @@ public class ZeroFrame implements Frame {
 
     @Override
     public int getDuplicationDuration() {
+        return 0;
+    }
+
+    @Override
+    public int getNextFrameScore() {
         return 0;
     }
 }
