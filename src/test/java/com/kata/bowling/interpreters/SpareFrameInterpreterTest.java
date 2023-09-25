@@ -10,8 +10,8 @@ import static org.junit.Assert.assertTrue;
 
 public class SpareFrameInterpreterTest {
 
-    private static final String SPARE_FRAME = "7#";
-    private static final String NON_SPARE_FRAME = "S9";
+    private static final String SPARE_FRAME = "7/";
+    private static final String NON_SPARE_FRAME = "X9";
 
     private SpareFrameInterpreter spareFrameInterpreter;
 

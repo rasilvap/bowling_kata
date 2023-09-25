@@ -10,8 +10,8 @@ import static org.junit.Assert.assertTrue;
 
 public class ZeroFrameInterpreterTest {
 
-    private static final String ZERO_FRAME = "..";
-    private static final String NON_ZERO_FRAME = "SS";
+    private static final String ZERO_FRAME = "NON";
+    private static final String NON_ZERO_FRAME = "X-";
 
     private ZeroFrameInterpreter zeroFrameInterpreter;
 

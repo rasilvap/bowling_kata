@@ -35,12 +35,12 @@ public class BowlingScoreCalculatorTest {
 
     private void generateRollsSequencesList() {
         rollsSequencesList = Map.of(
-                "5#5#5#5#5#5#5#5#5#5#5#", 200,
-                "1.1.1.1.1.1.1.1.1.1.", 10,
-                "2.2.2.2.2.2.2.2.2.2.", 20,
-                "524653SS5#..189#SSS", 144,
-                "SSSSSSSSSSSS", 300,
-                "....................", 0
+                "5/5/5/5/5/5/5/5/5/5/5/", 200,
+                "1-1-1-1-1-1-1-1-1-1-", 10,
+                "2-2-2-2-2-2-2-2-2-2-", 20,
+                "524653XX5/--189/XXX", 144,
+                "XXXXXXXXXXXX", 300,
+                "--------------------", 0
         );
     }
 

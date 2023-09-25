@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 public class StrikeFrameInterpreterTest {
 
-    private static final String STRIKE_FRAME = "S";
+    private static final String STRIKE_FRAME = "X";
     private static final String NON_STRIKE_FRAME = "NON";
 
     private StrikeFrameInterpreter strikeFrameInterpreter;
