@@ -66,17 +66,17 @@ public class GameManagerTest {
         gameManager.addFrame(new NormalFrame(2, 3));
         gameManager.addFrame(new NormalFrame(8, 1));
         gameManager.addFrame(new NormalFrame(4, 3));
-        gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new StrikeFrame());
+        gameManager.addFrame(new StrikeFrame(5));
+        gameManager.addFrame(new StrikeFrame(1));
         gameManager.addFrame(new SpareFrame(1));
         gameManager.addFrame(new ZeroFrame());
         gameManager.addFrame(new NormalFrame(1, 8));
         gameManager.addFrame(new SpareFrame(1));
-        gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new StrikeFrame());
+        gameManager.addFrame(new StrikeFrame(5));
+        gameManager.addFrame(new StrikeFrame(5));
+        gameManager.addFrame(new StrikeFrame(5));
 
-        assertEquals(122, gameManager.getScore());
+        assertEquals(98, gameManager.getScore());
     }
 
     @Test
@@ -90,9 +90,9 @@ public class GameManagerTest {
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
-        gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new StrikeFrame());
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
 
         assertEquals(111, gameManager.getScore());
     }
@@ -108,9 +108,9 @@ public class GameManagerTest {
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
         gameManager.addFrame(new NormalFrame(5, 4));
-        gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new StrikeFrame());
-        gameManager.addFrame(new StrikeFrame());
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
 
         assertEquals(131, gameManager.getScore());
     }
@@ -128,7 +128,7 @@ public class GameManagerTest {
     }
 
     private StrikeFrame generateStrikeFrame() {
-        return new StrikeFrame();
+        return new StrikeFrame(10);
     }
 
     private SpareFrame generateSpareFrame() {

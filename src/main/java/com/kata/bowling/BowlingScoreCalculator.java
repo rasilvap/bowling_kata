@@ -19,13 +19,6 @@ public class BowlingScoreCalculator {
         initializeLineInterpreter();
     }
 
-
-    /**
-     * Calculate the score of a roll sequence for a bowling game.
-     *
-     * @param rolls valid sequence of rolls in one line.
-     * @return calculated score.
-     */
     public int getScore(String rolls) {
         List<Frame> frames = lineInterpreter.parse(rolls);
         return getScore(frames);
@@ -52,5 +45,4 @@ public class BowlingScoreCalculator {
         }
         return bowlingGame;
     }
-
 }

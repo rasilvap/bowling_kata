@@ -1,7 +1,10 @@
 package com.kata.bowling.frames;
 
 public class StrikeFrame implements Frame {
-
+    private final int nextFrameScore;
+    public StrikeFrame(int nextFrameScore) {
+        this.nextFrameScore = nextFrameScore;
+    }
     private static final int SCORE = 10;
     private static final int DUPLICATION_DURATION = 2;
 
@@ -23,6 +26,6 @@ public class StrikeFrame implements Frame {
 
     @Override
     public int getNextFrameScore() {
-        return 10;
+        return nextFrameScore;
     }
 }

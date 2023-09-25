@@ -11,8 +11,8 @@ public class SpareFrameInterpreter implements FrameInterpreter {
     public Frame createFrameFromInput(String frame) {
         Frame result = null;
         if (isSpareFrame(frame)) {
-            int secondRoll = getScore(frame.charAt(0) + EMPTY_STRING);
-            result = new SpareFrame(secondRoll);
+            int nextFramePoints = getScore(frame.charAt(0) + EMPTY_STRING);
+            result = new SpareFrame(nextFramePoints);
         }
         return result;
     }
