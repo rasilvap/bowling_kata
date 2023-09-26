@@ -7,7 +7,7 @@ import com.kata.bowling.frames.StrikeFrame;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.kata.bowling.Constants.FRAMES_PER_GAME;
+import static com.kata.bowling.Constants.FRAME_NUMBERS;
 
 class BowlingScoreCalculator {
     private List<Frame> frames = new LinkedList<Frame>();
@@ -19,7 +19,7 @@ class BowlingScoreCalculator {
 
     int getScore() {
         int score = 0;
-        for (int currentFrame = 0; currentFrame < FRAMES_PER_GAME; currentFrame++) {
+        for (int currentFrame = 0; currentFrame < FRAME_NUMBERS; currentFrame++) {
             Frame frame = frames.get(currentFrame);
             score = incrementScore(score, frame);
             if (shouldAddAdditionalScores(frame)) {
