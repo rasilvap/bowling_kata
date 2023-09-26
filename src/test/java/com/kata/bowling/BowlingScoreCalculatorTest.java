@@ -39,7 +39,8 @@ public class BowlingScoreCalculatorTest {
                 "9-9-9-9-9-9-9-9-9-9-", 90,
                 "XXXXXXXXXXXX", 300,
                 "--------------------", 0,
-                "XXXXXXXXXXX5", 295
+                "XXXXXXXXXXX5", 295,
+                "99999999999999999999", 180
         );
     }
 }

@@ -42,7 +42,7 @@ public class LineInterpreter {
         if (isSingleCharacterFrame(line, parsingIndex)) {
             frameToAnalyze = line.charAt(parsingIndex) + EMPTY_STRING;
         } else {
-            if(parsingIndex + 2 < line.length()){
+            if(parsingIndex + 2 <= line.length()){
                 frameToAnalyze = line.substring(parsingIndex, parsingIndex + 2);
                 parsingIndex++;
             }else{
