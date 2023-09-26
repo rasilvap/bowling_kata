@@ -1,14 +1,10 @@
 package com.kata.bowling;
 
-
 import com.kata.bowling.frames.Frame;
 import com.kata.bowling.interpreters.*;
 
-
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-
 
 public class BowlingScoreCalculator {
 
@@ -16,7 +12,7 @@ public class BowlingScoreCalculator {
 
 
     public BowlingScoreCalculator() {
-        initializeLineInterpreter();
+        setupFrameInterpreters();
     }
 
     public int getScore(String rolls) {
@@ -24,8 +20,8 @@ public class BowlingScoreCalculator {
         return getScore(frames);
     }
 
-    private void initializeLineInterpreter() {
-        Collection<FrameInterpreter> interpreters = new LinkedList<FrameInterpreter>();
+    private void setupFrameInterpreters() {
+        var interpreters = new LinkedList<FrameInterpreter>();
         interpreters.add(new StrikeFrameInterpreter());
         interpreters.add(new SpareFrameInterpreter());
         interpreters.add(new NormalFrameInterpreter());

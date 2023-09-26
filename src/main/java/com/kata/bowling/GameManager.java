@@ -6,10 +6,9 @@ import com.kata.bowling.frames.NormalFrame;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.kata.bowling.Constants.FRAMES_PER_GAME;
+
 class GameManager {
-
-    private static final int FRAMES_PER_GAME = 10;
-
     private List<Frame> frames = new LinkedList<Frame>();
 
     void addFrame(Frame frame) {
@@ -22,8 +21,8 @@ class GameManager {
         for (int currentFrame = 0; currentFrame < FRAMES_PER_GAME; currentFrame++) {
             Frame frame = frames.get(currentFrame);
             score = incrementScore(score, frame);
-            if (shouldDuplicateNextScores(frame)) {
-                score = duplicateNextScores(score, currentFrame, frame);
+            if (shouldAddNextScores(frame)) {
+                score = addNextScores(score, currentFrame, frame);
             }
         }
         return score;
@@ -33,28 +32,37 @@ class GameManager {
         return score + frame.getScore();
     }
 
-    private int incrementScoreForDuplicates(int score, Frame frame) {
+    private int calculateAdditionalScore(int score, Frame frame) {
         if(frame instanceof NormalFrame){
             return score + frame.getScore();
         }
         return score + frame.getNextFrameScore();
     }
 
-    private boolean shouldDuplicateNextScores(Frame frame) {
+    private boolean shouldAddNextScores(Frame frame) {
         return frame.hasToDuplicateNextFrame() && frame.getDuplicationDuration() > 0;
     }
 
-    private int duplicateNextScores(int score, int currentFrame, Frame frame) {
-        final int topNextFrame = currentFrame + 1;
-        int nextFrame = topNextFrame;
-        while (nextFrame < (topNextFrame + frame.getDuplicationDuration())) {
-            score = incrementScoreForDuplicates(score, frames.get(nextFrame));
-            if (frames.get(nextFrame).getDuplicationDuration() == 1 && frame.getDuplicationDuration() != 1) {
-                nextFrame++;
+    private int addNextScores(int currentScore, int currentFrameIndex, Frame currentFrame) {
+        // Calculate the index of the next frame after the current frame
+        final var nextFrameIndex = currentFrameIndex + 1;
+
+        // Calculate the index of the last frame to duplicate based on current frame's rules
+        final var lastFrameToDuplicateIndex = nextFrameIndex + currentFrame.getDuplicationDuration();
+
+        // Iterate through frames to add duplicated scores
+        for (int i = nextFrameIndex; i < lastFrameToDuplicateIndex; i++) {
+            // Add the duplicated score based on the current frame's rules
+            currentScore = calculateAdditionalScore(currentScore, frames.get(i));
+
+            // Handle special case when the current frame's duplication is different from the next frame's
+            if (frames.get(i).getDuplicationDuration() == 1 && currentFrame.getDuplicationDuration() != 1) {
+                i++;
             }
-            nextFrame++;
         }
-        return score;
+
+        // Return the updated score after adding duplicated scores
+        return currentScore;
     }
 
 }

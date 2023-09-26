@@ -12,4 +12,5 @@ public class Constants {
 
     public static final String ZERO_FRAME = "NON"; //Describe a total frame with 0 points.
 
+    public static final int FRAMES_PER_GAME = 10;
 }

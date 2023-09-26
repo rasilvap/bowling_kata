@@ -25,7 +25,7 @@ public class LineInterpreter {
      * @return List<Frame>
      */
     public List<Frame> parse(final String line) {
-        List<Frame> frames = new LinkedList<Frame>();
+        List<Frame> frames = new LinkedList<>();
         for (parsingIndex = 0; parsingIndex < line.length(); parsingIndex++) {
             Frame frame = extractNextFrame(line);
             frames.add(frame);
@@ -68,5 +68,4 @@ public class LineInterpreter {
                 .findFirst() // Find the first non-null Frame
                 .orElse(null); // Return null if no valid Frame is found
     }
-
 }
