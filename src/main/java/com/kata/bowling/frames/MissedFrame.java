@@ -1,6 +1,6 @@
 package com.kata.bowling.frames;
 
-public class ZeroFrame implements Frame {
+public class MissedFrame implements Frame {
 
     private static final int SCORE = 0;
 

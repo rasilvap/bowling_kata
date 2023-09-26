@@ -2,6 +2,7 @@ package com.kata.bowling;
 
 import com.kata.bowling.frames.Frame;
 import com.kata.bowling.frames.NormalFrame;
+import com.kata.bowling.frames.StrikeFrame;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -52,13 +53,19 @@ class GameManager {
 
         // Iterate through frames to add duplicated scores
         for (int i = nextFrameIndex; i < lastFrameToDuplicateIndex; i++) {
-            // Add the duplicated score based on the current frame's rules
-            currentScore = calculateAdditionalScore(currentScore, frames.get(i));
 
-            // Handle special case when the current frame's duplication is different from the next frame's
-            if (frames.get(i).getIncreaseTimes() == 1 && currentFrame.getIncreaseTimes() != 1) {
-                i++;
+            if(i == frames.size() && currentFrame instanceof StrikeFrame){
+                break;
+            } else{
+                currentScore = calculateAdditionalScore(currentScore, frames.get(i));
+
+                // Handle special case when the current frame's duplication is different from the next frame's
+                if (frames.get(i).getIncreaseTimes() == 1 && currentFrame.getIncreaseTimes() != 1) {
+                    i++;
+                }
             }
+            // Add the duplicated score based on the current frame's rules
+
         }
 
         // Return the updated score after adding duplicated scores

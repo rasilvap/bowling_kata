@@ -3,7 +3,7 @@ package com.kata.bowling;
 import com.kata.bowling.frames.NormalFrame;
 import com.kata.bowling.frames.SpareFrame;
 import com.kata.bowling.frames.StrikeFrame;
-import com.kata.bowling.frames.ZeroFrame;
+import com.kata.bowling.frames.MissedFrame;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class GameManagerTest {
     @Test
     public void shouldReturnZeroScore() {
         for (int i = 0; i < 10; i++) {
-            ZeroFrame zeroFrame = generateZeroFrame();
+            MissedFrame zeroFrame = generateZeroFrame();
             gameManager.addFrame(zeroFrame);
         }
 
@@ -69,7 +69,7 @@ public class GameManagerTest {
         gameManager.addFrame(new StrikeFrame(5));
         gameManager.addFrame(new StrikeFrame(1));
         gameManager.addFrame(new SpareFrame(1));
-        gameManager.addFrame(new ZeroFrame());
+        gameManager.addFrame(new MissedFrame());
         gameManager.addFrame(new NormalFrame(1, 8));
         gameManager.addFrame(new SpareFrame(1));
         gameManager.addFrame(new StrikeFrame(5));
@@ -119,8 +119,8 @@ public class GameManagerTest {
         gameManager = new GameManager();
     }
 
-    private ZeroFrame generateZeroFrame() {
-        return new ZeroFrame();
+    private MissedFrame generateZeroFrame() {
+        return new MissedFrame();
     }
 
     private NormalFrame generateNormalFrame(int puntuation) {

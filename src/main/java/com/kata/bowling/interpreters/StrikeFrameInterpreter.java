@@ -19,7 +19,7 @@ public class StrikeFrameInterpreter implements FrameInterpreter {
 
     private int getScore(String partialFrame) {
         int score = 0;
-        if (!ZERO_ROLL.equals(partialFrame)) {
+        if (!MISSED_ROLL.equals(partialFrame)) {
             if(STRIKE_ROLL_SEPARATOR.equals(partialFrame)){
                 return 10;
             }

@@ -4,7 +4,7 @@ import com.kata.bowling.frames.Frame;
 import com.kata.bowling.frames.NormalFrame;
 
 import static com.kata.bowling.Constants.EMPTY_STRING;
-import static com.kata.bowling.Constants.ZERO_ROLL;
+import static com.kata.bowling.Constants.MISSED_ROLL;
 
 public class NormalFrameInterpreter implements FrameInterpreter {
 
@@ -29,7 +29,7 @@ public class NormalFrameInterpreter implements FrameInterpreter {
 
     private int getScore(String partialFrame) {
         int score = 0;
-        if (!ZERO_ROLL.equals(partialFrame)) {
+        if (!MISSED_ROLL.equals(partialFrame)) {
             score = Integer.parseInt(partialFrame);
         }
         return score;

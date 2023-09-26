@@ -25,7 +25,7 @@ public class BowlingScoreCalculator {
         interpreters.add(new StrikeFrameInterpreter());
         interpreters.add(new SpareFrameInterpreter());
         interpreters.add(new NormalFrameInterpreter());
-        interpreters.add(new ZeroFrameInterpreter());
+        interpreters.add(new MissedFrameInterpreter());
         lineInterpreter = new LineInterpreter(interpreters);
     }
 

@@ -24,7 +24,7 @@ public class SpareFrameInterpreter implements FrameInterpreter {
 
     private int getScore(String partialFrame) {
         int score = 0;
-        if (!ZERO_ROLL.equals(partialFrame)) {
+        if (!MISSED_ROLL.equals(partialFrame)) {
             score = Integer.parseInt(partialFrame);
         }
         return score;
