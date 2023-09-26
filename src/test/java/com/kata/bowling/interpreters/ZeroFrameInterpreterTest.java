@@ -22,14 +22,14 @@ public class ZeroFrameInterpreterTest {
 
     @Test
     public void shouldReturnStrikeFrame() {
-        Frame result = zeroFrameInterpreter.createFrameFromInput(ZERO_FRAME);
+        Frame result = zeroFrameInterpreter.parseFrameInput(ZERO_FRAME);
 
         assertTrue(result instanceof ZeroFrame);
     }
 
     @Test
     public void shouldReturnNullFrame() {
-        Frame result = zeroFrameInterpreter.createFrameFromInput(NON_ZERO_FRAME);
+        Frame result = zeroFrameInterpreter.parseFrameInput(NON_ZERO_FRAME);
 
         assertNull(result);
     }

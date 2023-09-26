@@ -22,14 +22,14 @@ public class StrikeFrameInterpreterTest {
 
     @Test
     public void shouldReturnStrikeFrame() {
-        Frame result = strikeFrameInterpreter.createFrameFromInput(STRIKE_FRAME);
+        Frame result = strikeFrameInterpreter.parseFrameInput(STRIKE_FRAME);
 
         assertTrue(result instanceof StrikeFrame);
     }
 
     @Test
     public void shouldReturnNullFrame() {
-        Frame result = strikeFrameInterpreter.createFrameFromInput(NON_STRIKE_FRAME);
+        Frame result = strikeFrameInterpreter.parseFrameInput(NON_STRIKE_FRAME);
 
         assertNull(result);
     }

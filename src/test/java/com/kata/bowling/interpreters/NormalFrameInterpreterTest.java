@@ -22,7 +22,7 @@ public class NormalFrameInterpreterTest {
 
     @Test
     public void shouldReturnStrikeFrame() {
-        Frame result = normalFrameInterpreter.createFrameFromInput(VALID_FRAME);
+        Frame result = normalFrameInterpreter.parseFrameInput(VALID_FRAME);
 
         assertTrue(result instanceof NormalFrame);
     }

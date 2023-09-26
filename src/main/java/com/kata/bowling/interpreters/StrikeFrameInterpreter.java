@@ -8,7 +8,7 @@ import static com.kata.bowling.Constants.*;
 public class StrikeFrameInterpreter implements FrameInterpreter {
 
     @Override
-    public Frame createFrameFromInput(String frame) {
+    public Frame parseFrameInput(String frame) {
         Frame result = null;
         if (STRIKE_ROLL_SEPARATOR.equals(frame)) {
             int nextFramePoints = getScore(frame.charAt(0) + EMPTY_STRING);

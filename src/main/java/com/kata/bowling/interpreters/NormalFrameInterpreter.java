@@ -9,7 +9,7 @@ import static com.kata.bowling.Constants.ZERO_ROLL;
 public class NormalFrameInterpreter implements FrameInterpreter {
 
     @Override
-    public Frame createFrameFromInput(String frame) {
+    public Frame parseFrameInput(String frame) {
         Frame result = null;
         if (isNormalFrame(frame)) {
             int firstRoll = getScore(frame.charAt(0) + EMPTY_STRING);

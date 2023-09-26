@@ -63,7 +63,7 @@ public class LineInterpreter {
         // Use a stream to process each frameParser in the 'parsers' collection
         // and evaluate 'frameToAnalyze' with each of them
         return parsers.stream()
-                .map(frameParser -> frameParser.createFrameFromInput(frameToAnalyze)) // Evaluate
+                .map(frameParser -> frameParser.parseFrameInput(frameToAnalyze)) // Evaluate
                 .filter(frame -> frame != null) // Filter out null results
                 .findFirst() // Find the first non-null Frame
                 .orElse(null); // Return null if no valid Frame is found

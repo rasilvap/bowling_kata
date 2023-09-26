@@ -14,13 +14,13 @@ public class StrikeFrame implements Frame {
     }
 
     @Override
-    public boolean hasToDuplicateNextFrame() {
+    public boolean shouldIncreaseNextFrame() {
         return true;
     }
 
 
     @Override
-    public int getDuplicationDuration() {
+    public int getIncreaseTimes() {
         return DUPLICATION_DURATION;
     }
 

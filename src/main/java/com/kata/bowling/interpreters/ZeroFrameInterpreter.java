@@ -8,7 +8,7 @@ import static com.kata.bowling.Constants.ZERO_FRAME;
 public class ZeroFrameInterpreter implements FrameInterpreter {
 
     @Override
-    public Frame createFrameFromInput(String frame) {
+    public Frame parseFrameInput(String frame) {
         Frame result = null;
         if (isZeroFrame(frame)) {
             result = new ZeroFrame();

@@ -8,7 +8,7 @@ import static com.kata.bowling.Constants.*;
 public class SpareFrameInterpreter implements FrameInterpreter {
 
     @Override
-    public Frame createFrameFromInput(String frame) {
+    public Frame parseFrameInput(String frame) {
         Frame result = null;
         if (isSpareFrame(frame)) {
             int nextFramePoints = getScore(frame.charAt(0) + EMPTY_STRING);

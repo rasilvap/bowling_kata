@@ -16,13 +16,13 @@ public class NormalFrame implements Frame {
     }
 
     @Override
-    public boolean hasToDuplicateNextFrame() {
+    public boolean shouldIncreaseNextFrame() {
         return false;
     }
 
 
     @Override
-    public int getDuplicationDuration() {
+    public int getIncreaseTimes() {
         return 0;
     }
 

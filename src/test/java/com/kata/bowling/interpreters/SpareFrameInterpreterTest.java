@@ -22,14 +22,14 @@ public class SpareFrameInterpreterTest {
 
     @Test
     public void shouldReturnStrikeFrame() {
-        Frame result = spareFrameInterpreter.createFrameFromInput(SPARE_FRAME);
+        Frame result = spareFrameInterpreter.parseFrameInput(SPARE_FRAME);
 
         assertTrue(result instanceof SpareFrame);
     }
 
     @Test
     public void shouldReturnNullFrame() {
-        Frame result = spareFrameInterpreter.createFrameFromInput(NON_SPARE_FRAME);
+        Frame result = spareFrameInterpreter.parseFrameInput(NON_SPARE_FRAME);
 
         assertNull(result);
     }

@@ -21,8 +21,8 @@ class GameManager {
         for (int currentFrame = 0; currentFrame < FRAMES_PER_GAME; currentFrame++) {
             Frame frame = frames.get(currentFrame);
             score = incrementScore(score, frame);
-            if (shouldAddNextScores(frame)) {
-                score = addNextScores(score, currentFrame, frame);
+            if (shouldAddAdditionalScores(frame)) {
+                score = addAdditionalScores(score, currentFrame, frame);
             }
         }
         return score;
@@ -39,16 +39,16 @@ class GameManager {
         return score + frame.getNextFrameScore();
     }
 
-    private boolean shouldAddNextScores(Frame frame) {
-        return frame.hasToDuplicateNextFrame() && frame.getDuplicationDuration() > 0;
+    private boolean shouldAddAdditionalScores(Frame frame) {
+        return frame.shouldIncreaseNextFrame() && frame.getIncreaseTimes() > 0;
     }
 
-    private int addNextScores(int currentScore, int currentFrameIndex, Frame currentFrame) {
+    private int addAdditionalScores(int currentScore, int currentFrameIndex, Frame currentFrame) {
         // Calculate the index of the next frame after the current frame
         final var nextFrameIndex = currentFrameIndex + 1;
 
         // Calculate the index of the last frame to duplicate based on current frame's rules
-        final var lastFrameToDuplicateIndex = nextFrameIndex + currentFrame.getDuplicationDuration();
+        final var lastFrameToDuplicateIndex = nextFrameIndex + currentFrame.getIncreaseTimes();
 
         // Iterate through frames to add duplicated scores
         for (int i = nextFrameIndex; i < lastFrameToDuplicateIndex; i++) {
@@ -56,7 +56,7 @@ class GameManager {
             currentScore = calculateAdditionalScore(currentScore, frames.get(i));
 
             // Handle special case when the current frame's duplication is different from the next frame's
-            if (frames.get(i).getDuplicationDuration() == 1 && currentFrame.getDuplicationDuration() != 1) {
+            if (frames.get(i).getIncreaseTimes() == 1 && currentFrame.getIncreaseTimes() != 1) {
                 i++;
             }
         }
