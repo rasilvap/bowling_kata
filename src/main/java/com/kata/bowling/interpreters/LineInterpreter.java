@@ -6,8 +6,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.kata.bowling.Constants.EMPTY_STRING;
-import static com.kata.bowling.Constants.SINGLE_VALID_FRAME;
+import static com.kata.bowling.util.Constants.EMPTY_STRING;
+import static com.kata.bowling.util.Constants.SINGLE_VALID_FRAME;
 
 public class LineInterpreter {
     private final Collection<FrameInterpreter> parsers;

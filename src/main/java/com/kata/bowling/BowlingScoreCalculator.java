@@ -7,7 +7,7 @@ import com.kata.bowling.frames.StrikeFrame;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.kata.bowling.Constants.FRAME_NUMBERS;
+import static com.kata.bowling.util.Constants.FRAME_NUMBERS;
 
 class BowlingScoreCalculator {
     private List<Frame> frames = new LinkedList<Frame>();

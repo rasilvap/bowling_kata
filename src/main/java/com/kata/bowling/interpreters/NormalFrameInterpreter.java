@@ -3,8 +3,8 @@ package com.kata.bowling.interpreters;
 import com.kata.bowling.frames.Frame;
 import com.kata.bowling.frames.NormalFrame;
 
-import static com.kata.bowling.Constants.EMPTY_STRING;
-import static com.kata.bowling.Constants.MISSED_ROLL;
+import static com.kata.bowling.util.Constants.EMPTY_STRING;
+import static com.kata.bowling.util.Constants.MISSED_ROLL;
 
 public class NormalFrameInterpreter implements FrameInterpreter {
 

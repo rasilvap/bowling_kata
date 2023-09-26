@@ -1,4 +1,4 @@
-package com.kata.bowling;
+package com.kata.bowling.util;
 
 public class Constants {
     public static final char SINGLE_VALID_FRAME = 'X';

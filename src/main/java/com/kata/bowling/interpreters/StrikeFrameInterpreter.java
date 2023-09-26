@@ -3,7 +3,7 @@ package com.kata.bowling.interpreters;
 import com.kata.bowling.frames.Frame;
 import com.kata.bowling.frames.StrikeFrame;
 
-import static com.kata.bowling.Constants.*;
+import static com.kata.bowling.util.Constants.*;
 
 public class StrikeFrameInterpreter implements FrameInterpreter {
 

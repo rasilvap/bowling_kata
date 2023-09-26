@@ -3,7 +3,7 @@ package com.kata.bowling.interpreters;
 import com.kata.bowling.frames.Frame;
 import com.kata.bowling.frames.MissedFrame;
 
-import static com.kata.bowling.Constants.MISSED_FRAME;
+import static com.kata.bowling.util.Constants.MISSED_FRAME;
 
 public class MissedFrameInterpreter implements FrameInterpreter {
 
