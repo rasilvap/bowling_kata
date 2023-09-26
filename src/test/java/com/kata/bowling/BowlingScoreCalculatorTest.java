@@ -1,47 +1,137 @@
 package com.kata.bowling;
 
+import com.kata.bowling.frames.NormalFrame;
+import com.kata.bowling.frames.SpareFrame;
+import com.kata.bowling.frames.StrikeFrame;
+import com.kata.bowling.frames.MissedFrame;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 public class BowlingScoreCalculatorTest {
 
-    private BowlingScoreCalculator bowlingScoreCalculator;
-
-    private Map<String, Integer> rollsSequencesList;
+    private BowlingScoreCalculator gameManager;
 
     @Before
     public void setUp() {
-        initializeBowling();
-        generateRollsSequencesList();
+        initializeBowlingGame();
     }
 
     @Test
-    public void shouldCalculateTheCorrectScore() {
-        for (String key : rollsSequencesList.keySet()) {
-            int result = bowlingScoreCalculator.getScore(key);
-            int expectedResult = rollsSequencesList.get(key);
-
-            assertEquals(expectedResult, result);
+    public void shouldReturnZeroScore() {
+        for (int i = 0; i < 10; i++) {
+            MissedFrame zeroFrame = generateZeroFrame();
+            gameManager.addFrame(zeroFrame);
         }
+
+        assertEquals(0, gameManager.getScore());
     }
 
-    private void initializeBowling() {
-        bowlingScoreCalculator = new BowlingScoreCalculator();
+
+    @Test
+    public void shouldReturnSumOfNormalFramesAsScore() {
+        for (int i = 0; i < 10; i++) {
+            NormalFrame normalFrame = generateNormalFrame(i);
+            gameManager.addFrame(normalFrame);
+        }
+
+        assertEquals(45, gameManager.getScore());
     }
 
-    private void generateRollsSequencesList() {
-        rollsSequencesList = Map.of(
-               "5/5/5/5/5/5/5/5/5/5/5", 150,
-                "9-9-9-9-9-9-9-9-9-9-", 90,
-                "XXXXXXXXXXXX", 300,
-                "--------------------", 0,
-                "XXXXXXXXXXX5", 295,
-                "99999999999999999999", 180,
-                "1/X11111111111111X", 58
-        );
+
+    @Test
+    public void shouldReturnPerfectScore() {
+        for (int i = 0; i < 12; i++) {
+            StrikeFrame strikeFrame = generateStrikeFrame();
+            gameManager.addFrame(strikeFrame);
+        }
+
+        assertEquals(300, gameManager.getScore());
+    }
+
+    @Test
+    public void souldReturnPerfectSpareScore() {
+        for (int i = 0; i < 11; i++) {
+            SpareFrame spareFrame = generateSpareFrame();
+            gameManager.addFrame(spareFrame);
+        }
+
+        assertEquals(200, gameManager.getScore());
+    }
+
+
+    @Test
+    public void shouldReturnSumOfNormalFramesCombinedWithSpares() {
+        gameManager.addFrame(new NormalFrame(2, 3));
+        gameManager.addFrame(new NormalFrame(8, 1));
+        gameManager.addFrame(new NormalFrame(4, 3));
+        gameManager.addFrame(new StrikeFrame(5));
+        gameManager.addFrame(new StrikeFrame(1));
+        gameManager.addFrame(new SpareFrame(1));
+        gameManager.addFrame(new MissedFrame());
+        gameManager.addFrame(new NormalFrame(1, 8));
+        gameManager.addFrame(new SpareFrame(1));
+        gameManager.addFrame(new StrikeFrame(5));
+        gameManager.addFrame(new StrikeFrame(5));
+        gameManager.addFrame(new StrikeFrame(5));
+
+        assertEquals(98, gameManager.getScore());
+    }
+
+    @Test
+    public void shouldReturnSumOfNormalFramesCombinedWithStrikes() {
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
+
+        assertEquals(111, gameManager.getScore());
+    }
+
+    @Test
+    public void shouldReturnSumOfNormalFramesCombinedWithSparesAndStrikes() {
+        gameManager.addFrame(new SpareFrame(1));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new SpareFrame(1));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new NormalFrame(5, 4));
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
+        gameManager.addFrame(new StrikeFrame(10));
+
+        assertEquals(131, gameManager.getScore());
+    }
+
+    private void initializeBowlingGame() {
+        gameManager = new BowlingScoreCalculator();
+    }
+
+    private MissedFrame generateZeroFrame() {
+        return new MissedFrame();
+    }
+
+    private NormalFrame generateNormalFrame(int puntuation) {
+        return new NormalFrame(puntuation, 0);
+    }
+
+    private StrikeFrame generateStrikeFrame() {
+        return new StrikeFrame(10);
+    }
+
+    private SpareFrame generateSpareFrame() {
+        return new SpareFrame(10);
     }
 }

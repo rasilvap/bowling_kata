@@ -1,44 +1,71 @@
 package com.kata.bowling;
 
 import com.kata.bowling.frames.Frame;
-import com.kata.bowling.interpreters.*;
+import com.kata.bowling.frames.NormalFrame;
+import com.kata.bowling.frames.StrikeFrame;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class BowlingScoreCalculator {
+import static com.kata.bowling.Constants.FRAMES_PER_GAME;
 
-    private LineInterpreter lineInterpreter;
+class BowlingScoreCalculator {
+    private List<Frame> frames = new LinkedList<Frame>();
 
-
-    public BowlingScoreCalculator() {
-        setupFrameInterpreters();
+    void addFrame(Frame frame) {
+        frames.add(frame);
     }
 
-    public int getScore(String rolls) {
-        List<Frame> frames = lineInterpreter.parse(rolls);
-        return getScore(frames);
-    }
 
-    private void setupFrameInterpreters() {
-        var interpreters = new LinkedList<FrameInterpreter>();
-        interpreters.add(new StrikeFrameInterpreter());
-        interpreters.add(new SpareFrameInterpreter());
-        interpreters.add(new NormalFrameInterpreter());
-        interpreters.add(new MissedFrameInterpreter());
-        lineInterpreter = new LineInterpreter(interpreters);
-    }
-
-    private int getScore(final List<Frame> frames) {
-        GameManager bowlingGame = createBowlingGame(frames);
-        return bowlingGame.getScore();
-    }
-
-    private GameManager createBowlingGame(List<Frame> frames) {
-        GameManager bowlingGame = new GameManager();
-        for (Frame frame : frames) {
-            bowlingGame.addFrame(frame);
+    int getScore() {
+        int score = 0;
+        for (int currentFrame = 0; currentFrame < FRAMES_PER_GAME; currentFrame++) {
+            Frame frame = frames.get(currentFrame);
+            score = incrementScore(score, frame);
+            if (shouldAddAdditionalScores(frame)) {
+                score = addAdditionalScores(score, currentFrame, frame);
+            }
         }
-        return bowlingGame;
+        return score;
     }
+
+    private int incrementScore(int score, Frame frame) {
+        return score + frame.getScore();
+    }
+
+    private int calculateAdditionalScore(int score, Frame frame) {
+        if(frame instanceof NormalFrame){
+            return score + frame.getScore();
+        }
+        return score + frame.getNextFrameScore();
+    }
+
+    private boolean shouldAddAdditionalScores(Frame frame) {
+        return frame.shouldIncreaseNextFrame() && frame.getIncreaseTimes() > 0;
+    }
+
+    private int addAdditionalScores(int currentScore, int currentFrameIndex, Frame currentFrame) {
+        // Calculate the index of the next frame after the current frame
+        final var nextFrameIndex = currentFrameIndex + 1;
+
+        // Calculate the index of the last frame to duplicate based on current frame's rules
+        final var lastFrameToDuplicateIndex = nextFrameIndex + currentFrame.getIncreaseTimes();
+
+        // Iterate through frames to add duplicated scores
+        for (int i = nextFrameIndex; i < lastFrameToDuplicateIndex; i++) {
+
+            if(i == frames.size() && currentFrame instanceof StrikeFrame){
+                break;
+            } else{
+                currentScore = calculateAdditionalScore(currentScore, frames.get(i));
+
+                // Handle special case when the current frame's duplication is different from the next frame's
+                if (frames.get(i).getIncreaseTimes() == 1 && currentFrame.getIncreaseTimes() != 1) {
+                    i++;
+                }
+            }
+        }
+         return currentScore;
+    }
+
 }
